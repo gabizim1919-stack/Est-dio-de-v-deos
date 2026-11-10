@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conectando…</title>
+    <link rel="stylesheet" href="../estilo.css" />
+  </head>
+  <body>
+    <main>
+      <p class="tag">ESTÚDIO DE VÍDEOS</p>
+      <h1>Conectando <span>a conta…</span></h1>
+      <p id="msg">
+        Voltando para o Estúdio de Vídeos no seu computador. Se nada acontecer, verifique se o
+        comando <code>pnpm agente conectar</code> está rodando.
+      </p>
+    </main>
+    <script>
+      // Repassa a resposta do Login Kit (code/state ou error) para o agente que roda no
+      // computador do próprio usuário. Nenhum dado é enviado a outro lugar.
+      var q = window.location.search;
+      if (q) {
+        window.location.replace("http://localhost:3455/callback/" + q);
+      } else {
+        document.getElementById("msg").textContent = "Nenhuma autorização recebida.";
+      }
+    </script>
+  </body>
+</html>
